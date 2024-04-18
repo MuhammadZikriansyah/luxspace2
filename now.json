@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "configs/webpack.dev.config.js",
+        "use": "@vercel/webpack",
+        "config": {
+          "buildCommand": "npm run build:dev"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/public/$1",
+        "headers": {
+          "Cache-Control": "public, max-age=31536000, immutable"
+        }
+      }
+    ],
+    "regions": ["all"]
+  }
